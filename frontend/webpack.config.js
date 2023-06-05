@@ -1,9 +1,12 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
+    template: "./public/index.html",
     filename: "./index.html"
 });
+
+const cssPlugin = new MiniCssExtractPlugin();
 
 module.exports = {
     entry: './src/index.tsx',
@@ -20,7 +23,26 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"]
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.svg$/,
+                loader: "@svgr/webpack",
+                options: {
+                    svgoConfig: {
+                        plugins: {
+                            removeViewBox: false,
+                        }
+                    }
+                }
             },
             {
                 test: /\.tsx?$/,
@@ -34,5 +56,5 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.ts', '.tsx']
     },
-    plugins: [htmlPlugin]
+    plugins: [htmlPlugin, cssPlugin]
 };
