@@ -6,16 +6,28 @@ const htmlPlugin = new HtmlWebPackPlugin({
     filename: "./index.html"
 });
 
-const cssPlugin = new MiniCssExtractPlugin();
+const cssPlugin = new MiniCssExtractPlugin({
+    filename: "./index.css",
+});
 
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'eval-source-map',
     mode: 'development',
+    devServer: {
+        watchFiles: ["src/**/*", "public/**/*"]
+    },
     module: {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -28,10 +40,30 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            modules: true
+                            importLoaders: 1,
                         }
-                    }
+                    },
+                    {
+                        loader: "postcss-loader",
+                    },
                 ]
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  MiniCssExtractPlugin.loader,
+                  // Translates CSS into CommonJS
+                  {
+                    loader: "css-loader",
+                    options: {
+                        importLoaders: 2,
+                    }
+                },
+                  "postcss-loader",
+                  // Compiles Sass to CSS
+                  "sass-loader",
+                ],
             },
             {
                 test: /\.svg$/,
@@ -42,13 +74,6 @@ module.exports = {
                             removeViewBox: false,
                         }
                     }
-                }
-            },
-            {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
                 }
             },
         ]

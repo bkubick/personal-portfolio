@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "outDir": "./dist/",
         "target": "ESNext",
         "module": "ES6",
         "strict": true,
@@ -8,7 +9,13 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "jsx": "react",
-        "sourceMap": true
+        "sourceMap": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ] 
+        }
     },
     "include": ["./src/**/*"],
 }
