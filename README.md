@@ -1,7 +1,7 @@
 # Brandon Kubick - Engineering Portfolio
 
 ## Description
-My Engineering Portfolio is a website built using a Django backend with a React frontend, that
+My Engineering Portfolio is a website built using a React frontend, that
 highlights my work experiences, personal projects, and various skills I have acquired through each experience.
 
 ### TODO: Once I figure out how I am going to deploy this website (Possibly Kubernetes and Helm), come back and add that to this section.
