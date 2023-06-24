@@ -5,3 +5,15 @@
 body {
     @apply bg-secondary;
 }
+
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+}
+
+.btn-primary-outline {
+    @apply text-primary border-2 border-primary;
+}
+
+.btn-primary-outline:hover {
+    @apply bg-primary text-white;
+}
