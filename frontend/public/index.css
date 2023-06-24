@@ -3,5 +3,5 @@
 @import "tailwindcss/utilities";
 
 body {
-    @apply bg-slate-950;
+    @apply bg-secondary;
 }
