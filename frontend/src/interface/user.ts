@@ -5,12 +5,18 @@ interface ContactInformation {
 }
 
 
-interface User {
+interface SummaryDetails {
     firstName: string;
     lastName: string;
+    tagline: string;
+    summary: string;
+}
 
+
+interface User {
+    summaryDetails: SummaryDetails;
     contactInfo: ContactInformation;
 }
 
 
-export default User;
+export type { User, ContactInformation, SummaryDetails };
