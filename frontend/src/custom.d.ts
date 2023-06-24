@@ -5,6 +5,6 @@ declare module '*.css' {
 
 
 declare module '*.svg' {
-    const ReactComponent: React.ComponentType<React.SVGAttributes<SVGElement>>
+    const ReactComponent: React.ComponentType<React.SVGAttributes<SVGElement>>;
     export default ReactComponent;
 }
