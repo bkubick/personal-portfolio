@@ -18,7 +18,7 @@ interface State {}
 
 
 
-class LeftFrame extends React.Component<Props, State> {
+class SummaryFrame extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
     }
@@ -66,4 +66,4 @@ class LeftFrame extends React.Component<Props, State> {
     }
 }
 
-export default LeftFrame;
+export default SummaryFrame;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { User } from '@/interface/user';
 import DetailsFrame from './DetailsFrame';
-import LeftFrame from './LeftFrame';
+import SummaryFrame from './SummaryFrame';
 
 
 interface Props {}
@@ -39,7 +39,7 @@ class App extends React.Component<Props, State> {
             <div id='app' className='container mx-auto'>
                 <div className='grid grid-cols-5'>
                     <div className='col-span-2'>
-                        <LeftFrame user={ this.state.user }></LeftFrame>
+                        <SummaryFrame user={ this.state.user }></SummaryFrame>
                     </div>
                     <div className='col-span-3'>
                         <DetailsFrame user={ this.state.user }></DetailsFrame>
