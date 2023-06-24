@@ -6,7 +6,6 @@ interface Props {
 }
 
 interface State {
-    sections: string[];
     activeSectionName: string;
 }
 
