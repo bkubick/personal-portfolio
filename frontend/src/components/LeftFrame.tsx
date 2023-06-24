@@ -2,6 +2,8 @@ import React from 'react';
 
 import User from '@/interface/user';
 
+import TopNav from './TopNav';
+
 
 
 interface Props {
@@ -19,7 +21,8 @@ class LeftFrame extends React.Component<Props, State> {
 
     render() {
         return (
-            <div className="text-white text-3xl font-bold underline">
+            <div className="">
+                <TopNav></TopNav>
                 { this.props.user.firstName } { this.props.user.lastName }
             </div>
         )

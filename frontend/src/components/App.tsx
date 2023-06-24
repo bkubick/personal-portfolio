@@ -31,7 +31,7 @@ class App extends React.Component<Props, State> {
 
     render() {
         return (
-            <div id='app'>
+            <div id='app' className='container mx-auto my-10'>
                 <LeftFrame user={ this.state.user }></LeftFrame>
             </div>
         )
