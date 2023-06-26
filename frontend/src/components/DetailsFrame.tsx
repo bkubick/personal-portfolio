@@ -32,7 +32,7 @@ class DetailsFrame extends React.Component<Props, State> {
         super(props);
         this.state = {
             educationCardLimit: 3,
-            workExperienceCardLimit: 3,
+            workExperienceCardLimit: 10,
             projectCardLimit: 3
         }
     }
