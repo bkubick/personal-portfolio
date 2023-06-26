@@ -4,6 +4,7 @@ import { ProfessionalSkill, Technology } from './interface/skill';
 import { User } from '@/interface/user';
 import { WorkExperience } from '@/interface/work-experience';
 
+
 const user: User = {
     summaryDetails: {
         firstName: 'Brandon',
@@ -43,7 +44,7 @@ const user: User = {
                 <br/><br/>
 
                 I am driven by a continuous desire to learn and grow, and I am eager to apply my diverse
-                skill set to new challenges as a Software and/or Mechanical Engineer.
+                skill set to new challenges as a Software Engineer.
             </p>`,
 };
 
