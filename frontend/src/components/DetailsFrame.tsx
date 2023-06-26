@@ -55,7 +55,7 @@ class DetailsFrame extends React.Component<Props, State> {
     workExperienceCard(workExperience: WorkExperience): React.JSX.Element {
         this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-2'>
+            <div key={this.keyValue} className='card mb-6'>
                 <div className='text-lg text-slate-300'>
                     { workExperience.company.name } - { workExperience.jobTitle }
                 </div>
@@ -88,7 +88,7 @@ class DetailsFrame extends React.Component<Props, State> {
     educationCard(education: Education): React.JSX.Element {
         this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-2'>
+            <div key={this.keyValue} className='card mb-6'>
                 <div className='text-lg text-slate-300'>
                     { education.school.name } - { education.degree }
                 </div>
@@ -109,7 +109,7 @@ class DetailsFrame extends React.Component<Props, State> {
     projectCard(project: Project): React.JSX.Element {
         this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-2'>
+            <div key={this.keyValue} className='card mb-6'>
                 <div className='text-lg text-slate-300'>
                     { project.title }
                 </div>
