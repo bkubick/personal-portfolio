@@ -59,6 +59,8 @@ class SummaryFrame extends React.Component<Props, State> {
                     </div>
                     <div className='text-slate-400 mb-4'>
                         This was created by Branding Kubick, built using React, TypeScript, and TailWind.
+                        I want to point out that I am not a designer! This portfolio
+                        is meant to showcase my experience through actual development!
                     </div>
                 </div>
             </div>
