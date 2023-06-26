@@ -170,6 +170,10 @@ class App extends React.Component<Props, State> {
             ],
         }
 
+        this.addCursorFollowerListener();
+    }
+
+    addCursorFollowerListener(): void {
         const root: HTMLElement = document.documentElement;
 
         document.addEventListener('mousemove', evt => {
