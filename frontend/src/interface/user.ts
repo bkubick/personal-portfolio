@@ -16,6 +16,7 @@ interface SummaryDetails {
 interface User {
     summaryDetails: SummaryDetails;
     contactInfo: ContactInformation;
+    about: string;
 }
 
 
