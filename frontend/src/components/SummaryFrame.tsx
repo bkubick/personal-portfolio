@@ -42,7 +42,7 @@ class SummaryFrame extends React.Component<Props, State> {
                         </div>
                     </div>
                     <div>
-                        <a className='btn btn-primary-outline cursor-pointer' href="/Resume-BrandonKubick.pdf" download>Resume</a>
+                        <a className='btn btn-primary-outline cursor-pointer' href="/Resume-BrandonKubick.pdf" target='_blank'>Resume</a>
                     </div>
                 </div>
                 <div className='mb-4'>
@@ -50,10 +50,10 @@ class SummaryFrame extends React.Component<Props, State> {
                         <a href={`mailto:${this.props.user.contactInfo.email}`} target='_blank'>
                             <Envelope/>
                         </a>
-                        <a className='ml-12' href={this.props.user.contactInfo.github} target='_blank'>
+                        <a className='ml-6' href={this.props.user.contactInfo.github} target='_blank'>
                             <Github/>
                         </a>
-                        <a className='ml-12' href={this.props.user.contactInfo.linkedIn} target='_blank'>
+                        <a className='ml-6' href={this.props.user.contactInfo.linkedIn} target='_blank'>
                             <LinkedIn/>
                         </a>
                     </div>
