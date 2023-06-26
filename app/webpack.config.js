@@ -1,13 +1,21 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./public/index.html",
+    favicon: "./public/logo.ico",
     filename: "./index.html"
 });
 
 const cssPlugin = new MiniCssExtractPlugin({
     filename: "./index.css",
+});
+
+const copyPlugin = new CopyWebpackPlugin({
+  patterns: [
+    { from: "public/static", to: "" },
+  ],
 });
 
 module.exports = {
@@ -84,5 +92,5 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.ts', '.tsx']
     },
-    plugins: [htmlPlugin, cssPlugin]
+    plugins: [htmlPlugin, cssPlugin, copyPlugin]
 };
