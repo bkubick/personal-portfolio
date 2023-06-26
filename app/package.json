@@ -1,15 +1,22 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "My Personal Portfolio",
+  "homepage": "https://bkubick.github.io/personal-portfolio",
+  "repository": {
+    "url": "git+https://github.com/bkubick/personal-portfolio.git"
+  },
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
     "build": "npm run type-check && webpack --mode production",
+    "deploy": "gh-pages -d dist",
     "start": "webpack-dev-server --open --mode development --config webpack.config.js",
     "type-check": "tsc"
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
