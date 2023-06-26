@@ -98,10 +98,10 @@ class App extends React.Component<Props, State> {
                     jobTitle: 'Software Engineer I',
                     description: '',
                     details: [
-                        'Excelled and practiced all experiences noted as a Software Engineer I.',
-                        'Implemented and integrated a separate microservice API into the company\'s platform, uncoupling functionality to an independent service.',
-                        'Transitioned legacy company patterns to an industry-standard architecture, enhancing scalability and maintainability.',
-                        'Authored and reviewed technical documentation, standardizing architectural patterns across the codebase.'
+                        'Worked as a Full-Stack developer, dedicated to the development, maintenance, and optimization of the Catalant Marketplace.',
+                        'Applied the Agile/Scrum methodology throughout the software development lifecycle, from initial development to enterprise-wide deployment and ongoing support.',
+                        'Fostered effective cross-functional collaboration with Sales, Product, and Design teams to deliver rapid and high-quality software solutions, with an intuitive user experience.',
+                        'Conducted peer reviews and integration tests to ensure code quality, and compliance with company and industry standards.'
                     ],
                     startMonth: 7,
                     startYear: 2021,

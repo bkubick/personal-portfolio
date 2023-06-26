@@ -59,7 +59,7 @@ class DetailsFrame extends React.Component<Props, State> {
                 <div className='text-lg text-slate-300'>
                     { workExperience.company.name } - { workExperience.jobTitle }
                 </div>
-                <div className='mb-2 text-slate-300 pl-6'>
+                <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
                     { this.getDateDisplay(workExperience) }
                 </div>
                 <ul className='list-disc pl-6 mb-4'>
@@ -92,7 +92,7 @@ class DetailsFrame extends React.Component<Props, State> {
                 <div className='text-lg text-slate-300'>
                     { education.school.name } - { education.degree }
                 </div>
-                <div className='mb-2 pl-6 text-slate-300'>
+                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
                     { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
                 </div>
                 <ul className='list-disc pl-6'>

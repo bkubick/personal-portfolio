@@ -25,7 +25,7 @@ body {
 }
 
 .card {
-    @apply p-2 rounded shadow-md shadow-primary;
+    @apply p-2 rounded;
 }
 
 .card:hover {
