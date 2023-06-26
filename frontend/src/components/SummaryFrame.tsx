@@ -42,7 +42,7 @@ class SummaryFrame extends React.Component<Props, State> {
                         </div>
                     </div>
                     <div>
-                        <button className='btn btn-primary-outline'>Resume</button>
+                        <a className='btn btn-primary-outline cursor-pointer' href="/Resume-BrandonKubick.pdf" download>Resume</a>
                     </div>
                 </div>
                 <div className='mb-4'>
