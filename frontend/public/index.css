@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 body {
-    @apply bg-secondary;
+    @apply bg-secondary cursor-default
 }
 
 .btn {
@@ -16,4 +16,9 @@ body {
 
 .btn-primary-outline:hover {
     @apply bg-primary text-white;
+}
+
+.logo {
+    min-width: 30px;
+    width: 30px;
 }

@@ -25,27 +25,27 @@ class SummaryFrame extends React.Component<Props, State> {
 
     render() {
         return (
-            <div className="py-10 h-screen">
-                <div className='mb-40'>
+            <div className="py-10 mx-12 flex flex-col h-screen justify-between">
+                <div className='mb-4'>
                     <TopNav></TopNav>
                 </div>
-                <div className='mb-12'>
-                    <div className="">
+                <div className='mb-4'>
+                    <div>
                         <div className='uppercase text-white mb-2 text-4xl'>
                             { `${this.props.user.summaryDetails.firstName} ${this.props.user.summaryDetails.lastName}` }
                         </div>
-                        <div className='text-slate-400 mb-8 text-2xl'>
+                        <div className='text-slate-300 mb-8 text-2xl'>
                             { this.props.user.summaryDetails.tagline }
                         </div>
                         <div className='text-slate-400 mb-8 text-base'>
                             { this.props.user.summaryDetails.summary }
                         </div>
                     </div>
+                    <div>
+                        <button className='btn btn-primary-outline'>Resume</button>
+                    </div>
                 </div>
-                <div className='mb-48'>
-                    <button className='btn btn-primary-outline'>Resume</button>
-                </div>
-                <div>
+                <div className='mb-4'>
                     <div className='flex mb-4'>
                         <a href={`mailto:${this.props.user.contactInfo.email}`} target='_blank'>
                             <Envelope/>
@@ -57,8 +57,8 @@ class SummaryFrame extends React.Component<Props, State> {
                             <LinkedIn/>
                         </a>
                     </div>
-                    <div className='text-slate-400 '>
-                        This was built with React and Figma
+                    <div className='text-slate-400 mb-4'>
+                        This was created by Branding Kubick, built using React, TypeScript, and TailWind.
                     </div>
                 </div>
             </div>
