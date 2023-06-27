@@ -1,8 +1,14 @@
+import { College } from '@/interface/school';
 import { Education } from '@/interface/education';
 import { Project } from '@/interface/project';
 import { ProfessionalSkill, Technology } from './interface/skill';
 import { User } from '@/interface/user';
 import { WorkExperience } from '@/interface/work-experience';
+
+
+const columbia: College = {
+    name: 'Columbia University'
+}
 
 
 const user: User = {
@@ -199,24 +205,108 @@ const workExperiences: WorkExperience[] = [
 const projects: Project[] = [
     {
         title: 'SB3 Investments, LLC Website',
-        description: '',
         details: [
             'Started an LLC to build my rental property portfolio.',
             'Developing a website to track my cash flow, manage my properties, and recommend new investments based off preferences.',
             'Implemented a Flask and MySQL backend api, and a Vue3 and TypeScript frontend.'
         ],
-        technologies: [Technology.VUE, Technology.PYTHON, Technology.TYPESCRIPT, Technology.FLASK],
+        technologies: [
+            Technology.VUE,
+            Technology.PYTHON,
+            Technology.TYPESCRIPT,
+            Technology.FLASK,
+            Technology.DOCKER,
+            Technology.SQL
+        ],
         startMonth: 9,
         startYear: 2022,
+    },
+    {
+        title: 'Automatic Spice Dispenser',
+        details: [
+            'With a team of four other students, designed and manufactured an automated spice dispenser, that took first place at the Columbia University Mechanical Engineering Senior Design Expo.',
+            'Conducted lean methodology to identify target market through market analyses and interviewing over 120 potential customers, retail stores, and restaurants, to influence the design and functionality of the device.',
+            'Designed entire mechanism using SolidWorks, utilizing stress analysis simulations and gear design simulations to completely model the device.',
+            'Manufactured each piece using in-house 3D printers and laser cutters, and outsourced sintered pieces.',
+            'Programmed the dispensing control using a Raspberry Pi and Python.',
+            'Implemented computer vision with QR codes to input and track each spice loaded into the device.',
+            'Utilized an array of photo-resistors, along with deterministic calculations to track amount of spice in each spice container.',
+            'Implemented a complete user interface with a touch-screen controller using Python and Tkinter for easy operation and control for the user.',
+        ],
+        technologies: [
+            Technology.PYTHON,
+            Technology.TKINTER,
+            Technology.SOLIDWORKS,
+        ],
+        startMonth: 11,
+        startYear: 2018,
+        endMonth: 5,
+        endYear: 2019,
+        associatedWith: columbia,
+        link: 'https://prespiceteam.wixsite.com/website-1',
+    },
+    {
+        title: 'Real Estate Value Prediction & Data Pipeline',
+        details: [
+            `Developed a data pipeline and machine learning algorithm that values real estate property based on
+             housing and economic data.`,
+            `Scraped various real estate websites, and utilized multiple economic API's, to acquire data used for
+             the machine learning training and testing data.`
+        ],
+        technologies: [
+            Technology.PYTHON,
+            Technology.SQL,
+            Technology.MACHINE_LEARNING,
+        ],
+        startMonth: 2,
+        startYear: 2019,
+        endMonth: 5,
+        endYear: 2019,
+        associatedWith: columbia,
+    },
+    {
+        title: 'Traveling Salesman Genetic Algorithm',
+        details: [
+            'Developed multiple genetic algorithms using various programming languages to solve the Traveling Salesman Problem.',
+            'Analyzed and compared each test to three baseline models: random, hill climber, and parallel hill.'
+        ],
+        technologies: [
+            Technology.CPP,
+            Technology.PYTHON,
+            Technology.MATLAB,
+            Technology.GENETIC_ALGORITHM,
+        ],
+        startMonth: 9,
+        startYear: 2018,
+        endMonth: 12,
+        endYear: 2018,
+        associatedWith: columbia,
+    },
+    {
+        title: 'Mobile & Robotic Arm Programming',
+        details: [
+            `Programmed various algorithms using Python and controlled using ROS (Robotic Operating System) for a
+             simulated Baxter robot such as forward and inverse kinematics, cartesian control with numerical methods,
+             and motion planning.`,
+            `Programmed the Extended Kalman Filter state estimation using Python and controlled using ROS for a
+             simulated mobile robot.`
+        ],
+        technologies: [
+            Technology.PYTHON,
+            Technology.ROS,
+        ],
+        startMonth: 9,
+        startYear: 2018,
+        endMonth: 12,
+        endYear: 2018,
+        associatedWith: columbia,
     },
 ];
 
 
 const education: Education[] = [
     {
-        school: {
-            name: 'Columbia University',
-        },
+        school: columbia,
         degree: 'B.S. Mechanical Engineering',
         gpa: 4.0,
         startMonth: 9,
