@@ -16,41 +16,99 @@ interface Props {
 }
 
 
-interface State {}
+interface State {
+    localActiveSection: string;
+    startingActiveCircleXPosition: number;
+    currentActiveCircleXPosition: number;
+}
 
 
 
 class SummaryFrame extends React.Component<Props, State> {
+    navLinkSectionIds: Record<string, string> = {};
+
     constructor(props: Props) {
         super(props);
+        this.state = {
+            startingActiveCircleXPosition: 0,
+            currentActiveCircleXPosition: 0,
+            localActiveSection: this.props.activeSection,
+        };
+
+        this.props.sections.forEach((section: string) => {
+            this.navLinkSectionIds[section] = `nav-link-section-${section}`;
+        });
     }
 
-    isSectionActive(section: string): boolean {
-        return this.props.activeSection === section;
+    componentDidMount(): void {
+        this.addResizeWindowListener();
+
+        const circleStartingXPos: number = this.getNavbarSectionXPosition(this.props.sections[0]);
+        this.setState({
+            startingActiveCircleXPosition: circleStartingXPos,
+            currentActiveCircleXPosition: circleStartingXPos,
+        });
     }
 
-    activeCircle(): React.JSX.Element {
-        return <span className="h-2 w-2 bg-primary rounded-full inline-block"></span>
+    addResizeWindowListener(): void {
+        window.addEventListener('resize', () => {
+            this.setState({
+                startingActiveCircleXPosition: this.getNavbarSectionXPosition(this.props.sections[0]),
+                currentActiveCircleXPosition: this.getNavbarSectionXPosition(this.props.activeSection),
+            });
+        });
+    }
+
+    getNavbarSectionXPosition(section: string): number {
+        const sectionElement: HTMLElement | null = document.getElementById(this.navLinkSectionIds[section]);
+        
+        if (!sectionElement) {
+            throw Error(`Navbar Section ${section} does not exist.`)
+        }
+        return sectionElement.offsetLeft;
+    }
+
+    calculateNavbarXPosition(): number {
+        return this.state.currentActiveCircleXPosition - this.state.startingActiveCircleXPosition; 
     }
 
     navItem(section: string): React.JSX.Element {
-        const active: boolean = this.isSectionActive(section);
-        const titleClass = 'leading-4 text-xs uppercase font-bold hover:text-primary';
+        if (this.props.activeSection === section && this.state.localActiveSection != this.props.activeSection) {
+            this.setState({
+                localActiveSection: section,
+                currentActiveCircleXPosition: this.getNavbarSectionXPosition(section),
+            });
+        }
+
+        const titleClass = 'leading-4 text-xs uppercase font-bold transition ease-in-out duration-150 hover:-translate-y-0.5 hover:scale-105';
+        const circleClass = `h-2 w-2 bg-primary rounded-full inline-block duration-300 xs:invisible visible md:invisible lg:visible`;
+        const activeCircleStyle = {
+            transitionDuration: '300ms',
+            transform: `translateX(${this.calculateNavbarXPosition()}px)`,
+            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+        }
+
         return (
             <div key={section} className='mx-1 text-center'>
-                <div className={ titleClass }>
-                    <a href={`#${section}`}>
+                <a id={ this.navLinkSectionIds[section] } href={`#${section}`}>
+                    <div className={ titleClass }>
                         { section }
-                    </a>
-                </div>
-                <div className="leading-4">
-                    { active ? this.activeCircle() : '' }
-                </div>
+                    </div>
+                </a>
+                {
+                    section == this.props.sections[0] ? (
+                        <div id="active-nav-circle" className="leading-4" style={ activeCircleStyle }>
+                            <span className={ circleClass }></span>
+                        </div>
+                    ) : ''
+                }
+
             </div>
         )
     }
 
     render() {
+        const socialMediaIconClassName: string = 'hover:scale-125 transition ease-in-out duration-300';
         return (
             <div className="py-10 mx-12 flex flex-col h-screen justify-between">
                 <div className='mb-4'>
@@ -76,19 +134,21 @@ class SummaryFrame extends React.Component<Props, State> {
                         </div>
                     </div>
                     <div>
-                        <a className='btn btn-primary-outline cursor-pointer' href="/personal-portfolio/Resume-BrandonKubick.pdf" target='_blank'>Resume</a>
+                        <a href="/personal-portfolio/Resume-BrandonKubick.pdf" target='_blank'>
+                            <div className='btn btn-primary-outline cursor-pointer'>Resume</div>
+                        </a>
                     </div>
                 </div>
                 <div className='mb-4'>
-                    <div className='flex mb-4'>
+                    <div className='flex mb-4 items-center'>
                         <a href={`mailto:${this.props.user.contactInfo.email}`} target='_blank'>
-                            <Envelope/>
+                            <Envelope className={socialMediaIconClassName} />
                         </a>
                         <a className='ml-6' href={this.props.user.contactInfo.github} target='_blank'>
-                            <Github/>
+                            <Github className={socialMediaIconClassName}/>
                         </a>
                         <a className='ml-6' href={this.props.user.contactInfo.linkedIn} target='_blank'>
-                            <LinkedIn/>
+                            <LinkedIn className={socialMediaIconClassName}/>
                         </a>
                     </div>
                     <div className='text-slate-400 mb-4'>
