@@ -17,11 +17,11 @@ body {
 }
 
 .btn-primary-outline {
-    @apply text-primary border-2 border-primary;
+    @apply text-primary border-2 border-primary transition ease-in-out duration-150 inline-block;
 }
 
 .btn-primary-outline:hover {
-    @apply bg-primary text-white;
+    @apply -translate-y-1 shadow-md shadow-primary;
 }
 
 .card {
