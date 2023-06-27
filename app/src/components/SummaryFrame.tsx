@@ -5,12 +5,14 @@ import Github from '../static/img/github.svg';
 import LinkedIn from '../static/img/linked-in.svg';
 import Envelope from '../static/img/envelope.svg';
 
-import TopNav from './TopNav';
+import Logo from '../static/img/b_to_the_3_logo.svg';
 
 
 
 interface Props {
-    user: User
+    user: User;
+    sections: string[];
+    activeSection: string;
 }
 
 
@@ -23,11 +25,43 @@ class SummaryFrame extends React.Component<Props, State> {
         super(props);
     }
 
+    isSectionActive(section: string): boolean {
+        return this.props.activeSection === section;
+    }
+
+    activeCircle(): React.JSX.Element {
+        return <span className="h-2 w-2 bg-primary rounded-full inline-block"></span>
+    }
+
+    navItem(section: string): React.JSX.Element {
+        const active: boolean = this.isSectionActive(section);
+        const titleClass = 'leading-4 text-xs uppercase font-bold hover:text-primary';
+        return (
+            <div key={section} className='mx-1 text-center'>
+                <div className={ titleClass }>
+                    <a href={`#${section}`}>
+                        { section }
+                    </a>
+                </div>
+                <div className="leading-4">
+                    { active ? this.activeCircle() : '' }
+                </div>
+            </div>
+        )
+    }
+
     render() {
         return (
             <div className="py-10 mx-12 flex flex-col h-screen justify-between">
                 <div className='mb-4'>
-                    <TopNav></TopNav>
+                    <div className="text-white flex">
+                        <Logo className='logo'/>
+                        <div className='mx-5 flex my-2 xs:invisible visible md:invisible lg:visible'>
+                            { this.props.sections.map((section: string) => {
+                                return this.navItem(section);
+                            })}
+                        </div>
+                    </div>
                 </div>
                 <div className='mb-4'>
                     <div>
