@@ -12,7 +12,7 @@ module.exports = {
         'secondary': '#061728',
       },
       animation: {
-        'fade-in': 'fadeIn 1s ease-in forwards'
+        'fade-in': 'fadeIn 0.75s ease-in forwards'
       },
       keyframes: {
         fadeIn: {
