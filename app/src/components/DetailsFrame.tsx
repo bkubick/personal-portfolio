@@ -1,4 +1,5 @@
 import React from 'react';
+import { InView } from 'react-intersection-observer';
 
 import { Education } from '@/interface/education';
 import { Project } from '@/interface/project';
@@ -57,87 +58,99 @@ class DetailsFrame extends React.Component<Props, State> {
     workExperienceCard(workExperience: WorkExperience): React.JSX.Element {
         this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-6'>
-                <div className='text-lg text-slate-300'>
-                    { workExperience.company.name } - { workExperience.jobTitle }
-                </div>
-                <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
-                    { this.getDateDisplay(workExperience) }
-                </div>
-                <ul className='list-disc pl-6 mb-4'>
-                    {
-                        workExperience.details.map((detail: string) => {
-                            return <li>{ detail }</li>
-                        })
-                    }
-                </ul>
-                <div className='mb-2 flex flex-wrap'>
-                    {
-                        workExperience.technologies.map((technology: Technology) => {
-                            return  this.getPill(technology)
-                        })
-                    }
-                    {
-                        workExperience.professionalSkills.map((skill: ProfessionalSkill) => {
-                            return  this.getPill(skill)
-                        })
-                    }
-                </div>
-            </div>
+            <InView>
+                {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                    <div ref={ ref } key={ workExperience.company.name + workExperience.jobTitle } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
+                        { inView }
+                        <div className='text-lg text-slate-300'>
+                            { workExperience.company.name } - { workExperience.jobTitle }
+                        </div>
+                        <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
+                            { this.getDateDisplay(workExperience) }
+                        </div>
+                        <ul className='list-disc pl-6 mb-4'>
+                            {
+                                workExperience.details.map((detail: string) => {
+                                    return <li>{ detail }</li>
+                                })
+                            }
+                        </ul>
+                        <div className='mb-2 flex flex-wrap'>
+                            {
+                                workExperience.technologies.map((technology: Technology) => {
+                                    return  this.getPill(technology)
+                                })
+                            }
+                            {
+                                workExperience.professionalSkills.map((skill: ProfessionalSkill) => {
+                                    return  this.getPill(skill)
+                                })
+                            }
+                        </div>
+                    </div>
+                )}
+            </InView>
         )
     }
 
     educationCard(education: Education): React.JSX.Element {
-        this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-6'>
-                <div className='text-lg text-slate-300'>
-                    { education.school.name } - { education.degree }
-                </div>
-                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                    { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
-                </div>
-                <ul className='list-disc pl-6'>
-                    {
-                        education.details.map((detail: string) => {
-                            return <li>{ detail }</li>
-                        })
-                    }
-                </ul>
-            </div>
+            <InView>
+                {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                    <div ref={ ref } key={education.courses + education.degree} className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
+                        <div className='text-lg text-slate-300'>
+                            { education.school.name } - { education.degree }
+                        </div>
+                        <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
+                            { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
+                        </div>
+                        <ul className='list-disc pl-6'>
+                            {
+                                education.details.map((detail: string) => {
+                                    return <li>{ detail }</li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                )}
+            </InView>
         )
     }
 
     projectCard(project: Project): React.JSX.Element {
         this.keyValue += 1;
         return (
-            <div key={this.keyValue} className='card mb-6'>
-                <div className='text-lg text-slate-300 flex items-center'>
-                    { project.title }
-                    <span className='ml-4'>
-                        {
-                            project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
-                        }
-                    </span>
-                </div>
-                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                    { this.getDateDisplay(project) }
-                </div>
-                <ul className='list-disc pl-6 mb-4'>
-                    {
-                        project.details.map((detail: string) => {
-                            return <li>{ detail }</li>
-                        })
-                    }
-                </ul>
-                <div className='mb-2 flex flex-wrap'>
-                    {
-                        project.technologies.map((technology: Technology) => {
-                            return  this.getPill(technology)
-                        })
-                    }
-                </div>
-            </div>
+            <InView>
+                {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                    <div ref={ ref } key={ project.title } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
+                        <div className='text-lg text-slate-300 flex items-center'>
+                            { project.title }
+                            <span className='ml-4'>
+                                {
+                                    project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
+                                }
+                            </span>
+                        </div>
+                        <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
+                            { this.getDateDisplay(project) }
+                        </div>
+                        <ul className='list-disc pl-6 mb-4'>
+                            {
+                                project.details.map((detail: string) => {
+                                    return <li>{ detail }</li>
+                                })
+                            }
+                        </ul>
+                        <div className='mb-2 flex flex-wrap'>
+                            {
+                                project.technologies.map((technology: Technology) => {
+                                    return  this.getPill(technology)
+                                })
+                            }
+                        </div>
+                    </div>
+                )}
+            </InView>
         )
     }
 
@@ -174,17 +187,25 @@ class DetailsFrame extends React.Component<Props, State> {
     render(): React.JSX.Element {
         return (
             <div className="mx-12 mt-20">
-                <div id="about" className='section mb-20'>
-                    <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
-                        About
-                    </div>
-                    <div className='text-slate-400' dangerouslySetInnerHTML={ DisplayUtil.createMarkup(this.props.user.about) }>
-                    </div>
-                </div>
+                <InView>
+                    {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                        <div ref={ ref } id="about" className={`section mb-20 ${inView ? 'animate-fade-in' : ''}`}>
+                            <div className='uppercase text-xl text-white mb-4'>
+                                About
+                            </div>
+                            <div className='text-slate-400' dangerouslySetInnerHTML={ DisplayUtil.createMarkup(this.props.user.about) }>
+                            </div>
+                        </div>
+                    )}
+                </InView>
                 <div id="experience" className='section mb-20'>
-                    <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
-                        Work Experience
-                    </div>
+                    <InView>
+                        {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                                Work Experience
+                            </div>
+                        )}
+                    </InView>
                     <div className='text-slate-400'>
                         { 
                             this.getWorkExperienceCards()
@@ -192,9 +213,13 @@ class DetailsFrame extends React.Component<Props, State> {
                     </div>
                 </div>
                 <div id="education" className='section mb-20'>
-                    <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
-                        Education
-                    </div>
+                    <InView>
+                        {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                                Education
+                            </div>
+                        )}
+                    </InView>
                     <div className='text-slate-400'>
                         {
                             this.getEducationCards()
@@ -202,9 +227,13 @@ class DetailsFrame extends React.Component<Props, State> {
                     </div>
                 </div>
                 <div id="projects" className='section mb-20'>
-                    <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
-                        Personal Projects
-                    </div>
+                    <InView>
+                        {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
+                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                                Personal Projects
+                            </div>
+                        )}
+                    </InView>
                     <div className='text-slate-400'>
                         { 
                             this.getProjectCards()
