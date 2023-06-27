@@ -174,7 +174,7 @@ class DetailsFrame extends React.Component<Props, State> {
     render(): React.JSX.Element {
         return (
             <div className="mx-12 mt-20">
-                <div id="about" ref="about" className='section mb-20'>
+                <div id="about" className='section mb-20'>
                     <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
                         About
                     </div>
@@ -191,7 +191,7 @@ class DetailsFrame extends React.Component<Props, State> {
                         }
                     </div>
                 </div>
-                <div id="education" ref="education" className='section mb-20'>
+                <div id="education" className='section mb-20'>
                     <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
                         Education
                     </div>
@@ -201,7 +201,7 @@ class DetailsFrame extends React.Component<Props, State> {
                         }
                     </div>
                 </div>
-                <div id="projects" ref="projects" className='section mb-20'>
+                <div id="projects" className='section mb-20'>
                     <div className='sticky top-0 backdrop-blur uppercase text-xl text-white mb-4'>
                         Personal Projects
                     </div>
