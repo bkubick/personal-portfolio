@@ -16,6 +16,10 @@ enum Technology {
     TKINTER='TKinter',
     DOCKER='Docker',
     BOOTSTRAP='Bootstrap',
+    SQL='SQL',
+    MACHINE_LEARNING='Machine Learning',
+    GENETIC_ALGORITHM='Genetic Algorithm',
+    AI='AI'
 }
 
 
