@@ -114,7 +114,7 @@ class SummaryFrame extends React.Component<Props, State> {
                 <div className='mb-4'>
                     <div className="text-white flex">
                         <Logo className='logo'/>
-                        <div className='mx-5 flex my-2 xs:invisible visible md:invisible lg:visible'>
+                        <div className='mx-5 flex my-2 xs:hidden md:hidden lg:flex'>
                             { this.props.sections.map((section: string) => {
                                 return this.navItem(section);
                             })}
