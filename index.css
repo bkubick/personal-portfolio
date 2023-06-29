@@ -509,8 +509,14 @@ video {
     max-width: 1536px;
   }
 }
-.visible {
-  visibility: visible;
+.sticky {
+  position: sticky;
+}
+.top-0 {
+  top: 0px;
+}
+.z-10 {
+  z-index: 10;
 }
 .col-span-2 {
   grid-column: span 2 / span 2;
@@ -600,7 +606,7 @@ video {
   }
 }
 .animate-fade-in {
-  animation: fadeIn 0.75s ease-in forwards;
+  animation: fadeIn 0.75s ease-in;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -702,6 +708,11 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.backdrop-blur {
+  --tw-backdrop-blur: blur(8px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .transition {
   transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
@@ -829,25 +840,18 @@ body {
   fill: #f1f5f9;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
 
-  .md\:invisible {
-    visibility: hidden;
+  .lg\:h-screen {
+    height: 100vh;
   }
 
-  .md\:grid-cols-5 {
+  .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  .md\:overflow-hidden {
+  .lg\:overflow-hidden {
     overflow: hidden;
-  }
-}
-
-@media (min-width: 1024px) {
-
-  .lg\:visible {
-    visibility: visible;
   }
 }
 
