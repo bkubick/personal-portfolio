@@ -16,10 +16,15 @@ enum Technology {
     TKINTER='TKinter',
     DOCKER='Docker',
     BOOTSTRAP='Bootstrap',
+    TAILWIND='Tailwind',
     SQL='SQL',
     MACHINE_LEARNING='Machine Learning',
     GENETIC_ALGORITHM='Genetic Algorithm',
-    AI='AI'
+    AI='AI',
+    MATPLOTLIB='Matplotlib',
+    NUMPY='Numpy',
+    SKLEARN='Scikit Learn',
+    PANDAS='Pandas'
 }
 
 
@@ -39,4 +44,11 @@ enum ProfessionalSkill {
 }
 
 
-export { Technology, ProfessionalSkill };
+interface PersonalSkills {
+    technologies: Technology[];
+    frameworks: Technology[];
+    professional: ProfessionalSkill[];
+}
+
+
+export { Technology, type PersonalSkills, ProfessionalSkill };
