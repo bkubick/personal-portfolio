@@ -1,7 +1,7 @@
 import { College } from '@/interface/school';
 import { Education } from '@/interface/education';
 import { Project } from '@/interface/project';
-import { ProfessionalSkill, Technology } from './interface/skill';
+import { ProfessionalSkill, PersonalSkills, Technology } from './interface/skill';
 import { User } from '@/interface/user';
 import { WorkExperience } from '@/interface/work-experience';
 
@@ -222,6 +222,46 @@ const projects: Project[] = [
         startYear: 2022,
     },
     {
+        title: 'Traveling Salesman Genetic Algorithm',
+        details: [
+            'Developed multiple genetic algorithms using various programming languages to solve the Traveling Salesman Problem.',
+            'Analyzed and compared each test to three baseline models: random and hill climber.'
+        ],
+        technologies: [
+            Technology.CPP,
+            Technology.PYTHON,
+            Technology.MATPLOTLIB,
+            Technology.NUMPY,
+            Technology.GENETIC_ALGORITHM,
+        ],
+        startMonth: 6,
+        startYear: 2023,
+        endMonth: 6,
+        endYear: 2023,
+    },
+    {
+        title: 'Real Estate Value Prediction & Data Pipeline',
+        details: [
+            `Developed a data pipeline and machine learning algorithm that values real estate property based on
+             housing and economic data.`,
+            `Scraped various real estate websites, and utilized multiple economic API's, to acquire data used for
+             the machine learning training and testing data.`
+        ],
+        technologies: [
+            Technology.PYTHON,
+            Technology.SQL,
+            Technology.MATPLOTLIB,
+            Technology.SKLEARN,
+            Technology.PANDAS,
+            Technology.MACHINE_LEARNING,
+        ],
+        startMonth: 2,
+        startYear: 2019,
+        endMonth: 5,
+        endYear: 2019,
+        associatedWith: columbia,
+    },
+    {
         title: 'Automatic Spice Dispenser',
         details: [
             'With a team of four other students, designed and manufactured an automated spice dispenser, that took first place at the Columbia University Mechanical Engineering Senior Design Expo.',
@@ -236,6 +276,7 @@ const projects: Project[] = [
         technologies: [
             Technology.PYTHON,
             Technology.TKINTER,
+            Technology.NUMPY,
             Technology.SOLIDWORKS,
         ],
         startMonth: 11,
@@ -244,43 +285,6 @@ const projects: Project[] = [
         endYear: 2019,
         associatedWith: columbia,
         link: 'https://prespiceteam.wixsite.com/website-1',
-    },
-    {
-        title: 'Real Estate Value Prediction & Data Pipeline',
-        details: [
-            `Developed a data pipeline and machine learning algorithm that values real estate property based on
-             housing and economic data.`,
-            `Scraped various real estate websites, and utilized multiple economic API's, to acquire data used for
-             the machine learning training and testing data.`
-        ],
-        technologies: [
-            Technology.PYTHON,
-            Technology.SQL,
-            Technology.MACHINE_LEARNING,
-        ],
-        startMonth: 2,
-        startYear: 2019,
-        endMonth: 5,
-        endYear: 2019,
-        associatedWith: columbia,
-    },
-    {
-        title: 'Traveling Salesman Genetic Algorithm',
-        details: [
-            'Developed multiple genetic algorithms using various programming languages to solve the Traveling Salesman Problem.',
-            'Analyzed and compared each test to three baseline models: random, hill climber, and parallel hill.'
-        ],
-        technologies: [
-            Technology.CPP,
-            Technology.PYTHON,
-            Technology.MATLAB,
-            Technology.GENETIC_ALGORITHM,
-        ],
-        startMonth: 9,
-        startYear: 2018,
-        endMonth: 12,
-        endYear: 2018,
-        associatedWith: columbia,
     },
     {
         title: 'Mobile & Robotic Arm Programming',
@@ -293,6 +297,7 @@ const projects: Project[] = [
         ],
         technologies: [
             Technology.PYTHON,
+            Technology.NUMPY,
             Technology.ROS,
         ],
         startMonth: 9,
@@ -344,4 +349,39 @@ const education: Education[] = [
 ];
 
 
-export { user, education, projects, workExperiences };
+const personalSkills: PersonalSkills = {
+    technologies: [
+        Technology.PYTHON,
+        Technology.JAVA,
+        Technology.JAVASCRIPT,
+        Technology.TYPESCRIPT,
+        Technology.CPP,
+        Technology.MATLAB,
+        Technology.SQL,
+        Technology.DOCKER,
+        Technology.ROS,
+    ],
+    frameworks: [
+        Technology.VUE,
+        Technology.REACT,
+        Technology.FLASK,
+        Technology.SKLEARN,
+        Technology.PANDAS,
+        Technology.NUMPY,
+        Technology.BOOTSTRAP,
+        Technology.TAILWIND,
+        Technology.GIT,
+    ],
+    professional: [
+        ProfessionalSkill.SOFTWARE_DEVELOPMENT,
+        ProfessionalSkill.PROBLEM_SOLVING,
+        ProfessionalSkill.TEAMWORK,
+        ProfessionalSkill.SYSTEM_ARCHITECTURE,
+        ProfessionalSkill.LEADERSHIP,
+        ProfessionalSkill.TECHNICAL_DOCUMENTATION,
+        ProfessionalSkill.DATA_ANALYSIS
+    ],
+}
+
+
+export { user, education, personalSkills, projects, workExperiences };

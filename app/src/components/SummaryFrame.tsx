@@ -13,6 +13,7 @@ interface Props {
     user: User;
     sections: string[];
     activeSection: string;
+    classNames: string;
 }
 
 
@@ -21,7 +22,6 @@ interface State {
     startingActiveCircleXPosition: number;
     currentActiveCircleXPosition: number;
 }
-
 
 
 class SummaryFrame extends React.Component<Props, State> {
@@ -81,7 +81,7 @@ class SummaryFrame extends React.Component<Props, State> {
         }
 
         const titleClass = 'leading-4 text-xs uppercase font-bold transition ease-in-out duration-150 hover:-translate-y-0.5 hover:scale-105';
-        const circleClass = `h-2 w-2 bg-primary rounded-full inline-block duration-300 xs:invisible visible md:invisible lg:visible`;
+        const circleClass = `h-2 w-2 bg-primary rounded-full inline-block duration-300`;
         const activeCircleStyle = {
             transitionDuration: '300ms',
             transform: `translateX(${this.calculateNavbarXPosition()}px)`,
@@ -110,11 +110,11 @@ class SummaryFrame extends React.Component<Props, State> {
     render() {
         const socialMediaIconClassName: string = 'hover:scale-125 transition ease-in-out duration-300';
         return (
-            <div className="py-10 mx-12 flex flex-col h-screen justify-between">
+            <div className={ `py-10 mx-12 flex flex-col justify-between ${ this.props.classNames }`}>
                 <div className='mb-4'>
                     <div className="text-white flex">
                         <Logo className='logo'/>
-                        <div className='mx-5 flex my-2 xs:invisible visible md:invisible lg:visible'>
+                        <div className='mx-5 flex my-2'>
                             { this.props.sections.map((section: string) => {
                                 return this.navItem(section);
                             })}
