@@ -26,8 +26,8 @@ class App extends React.Component<Props, State> {
     sections: string[] = [
         'about',
         'experience',
-        'education',
-        'projects'
+        'background',
+        'personal'
     ];
 
     constructor(props: Props) {
@@ -67,8 +67,8 @@ class App extends React.Component<Props, State> {
     addNavbarSectionScrollListener(): void {
         const detailsFrame: HTMLElement | null = document.getElementById('details-frame');
         const experienceSection: HTMLElement | null = document.getElementById('experience');
-        const educationSection: HTMLElement | null = document.getElementById('education');
-        const projectSection: HTMLElement | null = document.getElementById('projects');
+        const educationSection: HTMLElement | null = document.getElementById('background');
+        const projectSection: HTMLElement | null = document.getElementById('personal');
 
         const scrollHandler = () => {
             if (!(detailsFrame && projectSection && educationSection && experienceSection)) {
@@ -76,9 +76,9 @@ class App extends React.Component<Props, State> {
             }
 
             if (detailsFrame.scrollTop >= projectSection.offsetTop) {
-                this.updateActiveSection('projects');
+                this.updateActiveSection('personal');
             } else if (detailsFrame.scrollTop < projectSection.offsetTop && detailsFrame.scrollTop >= educationSection.offsetTop) {
-                this.updateActiveSection('education');
+                this.updateActiveSection('background');
             } else if (detailsFrame.scrollTop < educationSection.offsetTop && detailsFrame.scrollTop >= experienceSection.offsetTop) {
                 this.updateActiveSection('experience');
             } else {
@@ -92,13 +92,13 @@ class App extends React.Component<Props, State> {
     render() {
         return (
             <div id='app' className='container mx-auto h-screen flex'>
-                <div className='grid md:grid-cols-5'>
-                    <div className='col-span-2 md:overflow-hidden flex'>
+                <div className='grid lg:grid-cols-5'>
+                    <div className='col-span-2 lg:overflow-hidden flex'>
                         <div className='overflow-y-scroll no-scrollbar'>
-                            <SummaryFrame user={ this.state.user } activeSection={this.state.activeSection} sections={this.sections}></SummaryFrame>
+                            <SummaryFrame user={ this.state.user } activeSection={this.state.activeSection} sections={this.sections} classNames='lg:h-screen'></SummaryFrame>
                         </div>
                     </div>
-                    <div className='col-span-3 md:overflow-hidden flex'>
+                    <div className='col-span-3 lg:overflow-hidden flex'>
                         <div id="details-frame" className='overflow-y-scroll no-scrollbar'>
                             <DetailsFrame
                                 user={ this.state.user }

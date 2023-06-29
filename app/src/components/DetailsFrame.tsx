@@ -190,8 +190,8 @@ class DetailsFrame extends React.Component<Props, State> {
                 <InView>
                     {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
                         <div ref={ ref } id="about" className={`section mb-20 ${inView ? 'animate-fade-in' : ''}`}>
-                            <div className='uppercase text-xl text-white mb-4'>
-                                About
+                            <div className='sticky top-0 backdrop-blur z-10 uppercase text-xl text-white mb-4'>
+                                About Me
                             </div>
                             <div className='text-slate-400' dangerouslySetInnerHTML={ DisplayUtil.createMarkup(this.props.user.about) }>
                             </div>
@@ -201,7 +201,7 @@ class DetailsFrame extends React.Component<Props, State> {
                 <div id="experience" className='section mb-20'>
                     <InView>
                         {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                            <div ref={ ref } className={`sticky top-0 backdrop-blur z-10 uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
                                 Work Experience
                             </div>
                         )}
@@ -212,11 +212,11 @@ class DetailsFrame extends React.Component<Props, State> {
                         }
                     </div>
                 </div>
-                <div id="education" className='section mb-20'>
+                <div id="background" className='section mb-20'>
                     <InView>
                         {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
-                                Education
+                            <div ref={ ref } className={`sticky top-0 backdrop-blur z-10 uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                                Skills & Education
                             </div>
                         )}
                     </InView>
@@ -226,11 +226,11 @@ class DetailsFrame extends React.Component<Props, State> {
                         }
                     </div>
                 </div>
-                <div id="projects" className='section mb-20'>
+                <div id="personal" className='section mb-20'>
                     <InView>
                         {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                            <div ref={ ref } className={`uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
-                                Personal Projects
+                            <div ref={ ref } className={`sticky top-0 backdrop-blur z-10 uppercase text-xl text-white mb-4 ${inView ? 'animate-fade-in' : ''}`}>
+                                Personal Projects & Interests
                             </div>
                         )}
                     </InView>
