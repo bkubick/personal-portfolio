@@ -26,8 +26,7 @@ const user: User = {
         firstName: 'Brandon',
         lastName: 'Kubick',
         tagline: 'Full-Stack Developer | Aerospace Engineer',
-        summary: `I am a highly motivated individual seeking a mid-level position in Software Engineering.
-                  I am driven by a continuous desire to learn and grow, and am eager to apply my diverse
+        summary: `I am a highly motivated individual driven by a continuous desire to learn and grow, and am eager to apply my diverse
                   skill set to new challenges.`,
     },
     contactInfo: {
@@ -36,7 +35,7 @@ const user: User = {
         linkedIn: 'https://www.linkedin.com/in/brandonkubick/',
     },
     about: `<p>
-                I am a highly motivated individual seeking a mid-level position in Software Engineering.
+                I am a highly motivated individual working as a full-stack engineer.
                 With a background as a Full-Stack Software Developer, and as an R&D Aerospace Engineer,
                 I have excelled in both fields due to my strong focus, dedication, and passion for learning.
 
@@ -76,11 +75,10 @@ const workExperiences: WorkExperience[] = [
         details: [
             'Implemented and integrated a separate microservice API into the company\'s platform, uncoupling functionality to an independent service.',
             'Transitioned legacy company patterns to an industry-standard architecture, enhancing scalability and maintainability.',
-            'Authored and reviewed technical documentation, standardizing architectural patterns across the codebase.'
         ],
         startMonth: 1,
         startYear: 2024,
-        technologies: [Technology.PYTHON, Technology.VUE, Technology.AWS, Technology.JAVASCRIPT, Technology.DOCKER],
+        technologies: [Technology.PYTHON, Technology.VUE, Technology.AWS, Technology.TYPESCRIPT, Technology.DOCKER],
         professionalSkills: [ProfessionalSkill.SYSTEM_ARCHITECTURE, ProfessionalSkill.PRESENTATIONS, ProfessionalSkill.PROBLEM_SOLVING]
     },
     {
