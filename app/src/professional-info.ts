@@ -25,7 +25,7 @@ const user: User = {
     summaryDetails: {
         firstName: 'Brandon',
         lastName: 'Kubick',
-        tagline: 'Full-Stack Developer | Mechanical Engineer',
+        tagline: 'Full-Stack Developer | Aerospace Engineer',
         summary: `I am a highly motivated individual seeking a mid-level position in Software Engineering.
                   I am driven by a continuous desire to learn and grow, and am eager to apply my diverse
                   skill set to new challenges.`,
@@ -71,9 +71,13 @@ const workExperiences: WorkExperience[] = [
             name: 'HeartFlow',
             img: HeartFlowLogo
         },
-        jobTitle: 'Software Engineer',
+        jobTitle: 'Software Engineer II',
         description: '',
-        details: [],
+        details: [
+            'Implemented and integrated a separate microservice API into the company\'s platform, uncoupling functionality to an independent service.',
+            'Transitioned legacy company patterns to an industry-standard architecture, enhancing scalability and maintainability.',
+            'Authored and reviewed technical documentation, standardizing architectural patterns across the codebase.'
+        ],
         startMonth: 1,
         startYear: 2024,
         technologies: [Technology.PYTHON, Technology.VUE, Technology.AWS, Technology.JAVASCRIPT, Technology.DOCKER],

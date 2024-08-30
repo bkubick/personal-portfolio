@@ -33,7 +33,7 @@ class DetailsFrame extends React.Component<Props, State> {
         super(props);
         this.state = {
             workExperienceCardLimit: 5,
-            projectCardLimit: 3,
+            projectCardLimit: 10,
         }
     }
 
@@ -61,24 +61,26 @@ class DetailsFrame extends React.Component<Props, State> {
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
                     <div ref={ ref } key={ workExperience.company.name + workExperience.jobTitle } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
                         { inView }
-                        <div className='flex mb-2'>
-                            <img className='h-12 mr-4 rounded' src={ workExperience.company.img } alt={ workExperience.company.img }/>
+                        <div className='grid grid-flow-col auto-cols-auto'>
+                            <img className='col-auto h-12 mr-4 rounded' src={ workExperience.company.img } alt={ workExperience.company.img }/>
                             <div>
-                                <div className='text-lg text-slate-300'>
-                                    { workExperience.company.name } - { workExperience.jobTitle }
+                                <div>
+                                    <div className='text-lg text-slate-300'>
+                                        { workExperience.company.name } - { workExperience.jobTitle }
+                                    </div>
+                                    <div className='mb-2 uppercase text-xs text-slate-300 pl-6'>
+                                        { this.getDateDisplay(workExperience) }
+                                    </div>
                                 </div>
-                                <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
-                                    { this.getDateDisplay(workExperience) }
-                                </div>
+                                <ul className='list-disc pl-6 mb-4 text-sm'>
+                                    {
+                                        workExperience.details.map((detail: string) => {
+                                            return <li>{ detail }</li>
+                                        })
+                                    }
+                                </ul>
                             </div>
                         </div>
-                        <ul className='list-disc pl-6 mb-4'>
-                            {
-                                workExperience.details.map((detail: string) => {
-                                    return <li>{ detail }</li>
-                                })
-                            }
-                        </ul>
                         <div className='mb-2 flex flex-wrap'>
                             {
                                 workExperience.technologies.map((technology: Technology) => {
@@ -101,7 +103,7 @@ class DetailsFrame extends React.Component<Props, State> {
         return (
             <InView>
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                    <div ref={ ref } key={education.courses + education.degree} className={ `card mb-6 cursor-pointer ${inView ? 'animate-fade-in' : ''}`}>
+                    <div ref={ ref } key={education.courses + education.degree} className={ `card-hoverable mb-6 cursor-pointer ${inView ? 'animate-fade-in' : ''}`}>
                         <CollapsiblePanel>
                             {{
                                 icon: <img className='h-12 mr-4 rounded' src={ education.school.img } alt={ education.school.name }/>,
@@ -110,13 +112,13 @@ class DetailsFrame extends React.Component<Props, State> {
                                         <div className='text-lg text-slate-300'>
                                             { education.school.name } - { education.degree }
                                         </div>
-                                        <div className='pl-6 uppercase text-sm text-slate-300'>
+                                        <div className='pl-6 uppercase text-xs text-slate-300'>
                                             { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
                                         </div>
                                     </div>
                                 ),
                                 body: (
-                                    <ul className={ 'mt-4 list-disc pl-6' }>
+                                    <ul className={ 'mt-4 list-disc pl-6 text-sm' }>
                                         {
                                             education.details.map((detail: string) => {
                                                 return <li>{ detail }</li>
@@ -137,31 +139,37 @@ class DetailsFrame extends React.Component<Props, State> {
         return (
             <InView>
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                    <div ref={ ref } key={ project.title } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
-                        <div className="flex mb-2">
-                            { project.img ? <img className='h-12 mr-4 rounded' src={ project.img } alt={ project.title }/> : '' }
-                            <div>
-                                <div className='text-lg text-slate-300 flex items-center'>
-                                    { project.title }
-                                    <span className='ml-4'>
-                                        {
-                                            project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
-                                        }
-                                    </span>
+                    <div ref={ ref } key={ project.title } className={ `card-hoverable mb-6 ${inView ? 'animate-fade-in' : ''}`}>
+                        <CollapsiblePanel>
+                        {{
+                            icon: project.img ? <img className='h-12 mr-4 rounded' src={ project.img } alt={ project.title }/> : '',
+                            header: (
+                                <div>
+                                    <div className='text-lg text-slate-300 flex items-center'>
+                                        { project.title }
+                                        <span className='ml-4'>
+                                            {
+                                                project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
+                                            }
+                                        </span>
+                                    </div>
+                                    <div className='mb-2 pl-6 uppercase text-xs text-slate-300'>
+                                        { this.getDateDisplay(project) }
+                                    </div>
                                 </div>
-                                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                                    { this.getDateDisplay(project) }
-                                </div>
-                            </div>
-                        </div>
-                        <ul className='list-disc pl-6 mb-4'>
-                            {
-                                project.details.map((detail: string) => {
-                                    return <li>{ detail }</li>
-                                })
-                            }
-                        </ul>
-                        <div className='mb-2 flex flex-wrap'>
+                            ),
+                            body: (
+                                <ul className='list-disc pl-6 mb-4 text-sm'>
+                                    {
+                                        project.details.map((detail: string) => {
+                                            return <li>{ detail }</li>
+                                        })
+                                    }
+                                </ul>
+                            )
+                        }}
+                        </CollapsiblePanel>
+                        <div className='mt-2 flex flex-wrap'>
                             {
                                 project.technologies.map((technology: Technology) => {
                                     return  this.getPill(technology)

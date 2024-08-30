@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface PanelProps {
+interface ChildrenProps {
     icon?: React.ReactNode;
     header: React.ReactNode;
     body: React.ReactNode;
@@ -14,7 +14,7 @@ interface PanelProps {
  * @param children.body The body of the panel.
  * @returns the collapsible panel.
  */
-const CollapsiblePanel = ({children}: { children: PanelProps }) => {
+const CollapsiblePanel = ({children}: { children: ChildrenProps }) => {
     // Toggle the panel
     const [isOpen, setIsOpen] = useState(false);
     const togglePanel = () => setIsOpen(!isOpen);
