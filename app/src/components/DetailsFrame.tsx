@@ -62,11 +62,16 @@ class DetailsFrame extends React.Component<Props, State> {
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
                     <div ref={ ref } key={ workExperience.company.name + workExperience.jobTitle } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
                         { inView }
-                        <div className='text-lg text-slate-300'>
-                            { workExperience.company.name } - { workExperience.jobTitle }
-                        </div>
-                        <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
-                            { this.getDateDisplay(workExperience) }
+                        <div className='flex mb-2'>
+                            <img className='h-12 mr-4 rounded' src={ workExperience.company.img } alt={ workExperience.company.img }/>
+                            <div>
+                                <div className='text-lg text-slate-300'>
+                                    { workExperience.company.name } - { workExperience.jobTitle }
+                                </div>
+                                <div className='mb-2 uppercase text-sm text-slate-300 pl-6'>
+                                    { this.getDateDisplay(workExperience) }
+                                </div>
+                            </div>
                         </div>
                         <ul className='list-disc pl-6 mb-4'>
                             {
@@ -98,11 +103,16 @@ class DetailsFrame extends React.Component<Props, State> {
             <InView>
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
                     <div ref={ ref } key={education.courses + education.degree} className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
-                        <div className='text-lg text-slate-300'>
-                            { education.school.name } - { education.degree }
-                        </div>
-                        <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                            { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
+                        <div className='flex mb-2'>
+                            <img className='h-12 mr-4 rounded' src={ education.school.img } alt={ education.school.name }/>
+                            <div>
+                                <div className='text-lg text-slate-300'>
+                                    { education.school.name } - { education.degree }
+                                </div>
+                                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
+                                    { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
+                                </div>
+                            </div>
                         </div>
                         <ul className='list-disc pl-6'>
                             {
@@ -123,16 +133,21 @@ class DetailsFrame extends React.Component<Props, State> {
             <InView>
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
                     <div ref={ ref } key={ project.title } className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
-                        <div className='text-lg text-slate-300 flex items-center'>
-                            { project.title }
-                            <span className='ml-4'>
-                                {
-                                    project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
-                                }
-                            </span>
-                        </div>
-                        <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                            { this.getDateDisplay(project) }
+                        <div className="flex mb-2">
+                            { project.img ? <img className='h-12 mr-4 rounded' src={ project.img } alt={ project.title }/> : '' }
+                            <div>
+                                <div className='text-lg text-slate-300 flex items-center'>
+                                    { project.title }
+                                    <span className='ml-4'>
+                                        {
+                                            project.link ? <a href={ project.link } target='_blank'><UpRight className='fill-slate-300 hover:fill-slate-100'/></a> : ''
+                                        }
+                                    </span>
+                                </div>
+                                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
+                                    { this.getDateDisplay(project) }
+                                </div>
+                            </div>
                         </div>
                         <ul className='list-disc pl-6 mb-4'>
                             {

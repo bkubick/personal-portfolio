@@ -24,7 +24,9 @@ enum Technology {
     MATPLOTLIB='Matplotlib',
     NUMPY='Numpy',
     SKLEARN='Scikit Learn',
-    PANDAS='Pandas'
+    PANDAS='Pandas',
+    AWS='AWS',
+    WEBPACK='Webpack',
 }
 
 

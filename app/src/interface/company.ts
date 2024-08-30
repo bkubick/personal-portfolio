@@ -1,7 +1,7 @@
 interface Company {
     name: string;
     link?: string;
-    img?: string;
+    img: string;
 }
 
 

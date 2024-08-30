@@ -1,6 +1,6 @@
 interface College {
     name: string;
-    img?: string;
+    img: string;
     link?: string;
 }
 

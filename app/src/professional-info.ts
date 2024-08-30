@@ -1,13 +1,23 @@
-import { College } from '@/interface/school';
-import { Education } from '@/interface/education';
-import { Project } from '@/interface/project';
+import { College } from './interface/school';
+import { Education } from './interface/education';
+import { Project } from './interface/project';
 import { ProfessionalSkill, PersonalSkills, Technology } from './interface/skill';
-import { User } from '@/interface/user';
-import { WorkExperience } from '@/interface/work-experience';
+import { User } from './interface/user';
+import { WorkExperience } from './interface/work-experience';
+
+import B2The3PortfoliioLogo from './static/img/b2the3_portfolio_logo.png';
+import CatalantTechnologiesLogo from './static/img/catalant_technologies_logo.png';
+import ColumbiaLogo from './static/img/columbia_logo.png';
+import PSIEnginesLogo from './static/img/psi_logo.png';
+import RedlandsLogo from './static/img/redlands_logo.png';
+import SB3Logo from './static/img/sb3_logo.png';
+import TurbineAeroLogo from './static/img/turbineaero_logo.png';
+import HeartFlowLogo from './static/img/heartflow_logo.png';
 
 
 const columbia: College = {
-    name: 'Columbia University'
+    name: 'Columbia University',
+    img: ColumbiaLogo,
 }
 
 
@@ -58,7 +68,21 @@ const user: User = {
 const workExperiences: WorkExperience[] = [
     {
         company: {
+            name: 'HeartFlow',
+            img: HeartFlowLogo
+        },
+        jobTitle: 'Software Engineer',
+        description: '',
+        details: [],
+        startMonth: 1,
+        startYear: 2024,
+        technologies: [Technology.PYTHON, Technology.VUE, Technology.AWS, Technology.JAVASCRIPT, Technology.DOCKER],
+        professionalSkills: [ProfessionalSkill.SYSTEM_ARCHITECTURE, ProfessionalSkill.PRESENTATIONS, ProfessionalSkill.PROBLEM_SOLVING]
+    },
+    {
+        company: {
             name: 'Catalant Technologies',
+            img: CatalantTechnologiesLogo
         },
         jobTitle: 'Software Engineer II',
         description: '',
@@ -89,6 +113,7 @@ const workExperiences: WorkExperience[] = [
     {
         company: {
             name: 'Catalant Technologies',
+            img: CatalantTechnologiesLogo
         },
         jobTitle: 'Software Engineer I',
         description: '',
@@ -118,6 +143,7 @@ const workExperiences: WorkExperience[] = [
     {
         company: {
             name: 'TurbineAero Engine Technics',
+            img: TurbineAeroLogo
         },
         jobTitle: 'R&D Engineer',
         description: '',
@@ -144,6 +170,7 @@ const workExperiences: WorkExperience[] = [
     {
         company: {
             name: 'TurbineAero Repair',
+            img: TurbineAeroLogo
         },
         jobTitle: 'MRO Engineer',
         description: '',
@@ -166,25 +193,8 @@ const workExperiences: WorkExperience[] = [
     },
     {
         company: {
-            name: 'Gage Mathers',
-        },
-        jobTitle: 'Part Time Legal Assistant & Software Consultant',
-        description: '',
-        details: [
-            'Conceptualized and executed a custom application leveraging Python and Tkinter to streamline the intakes and demand package creation process.',
-            'Conducted data ingestion by collecting and cleaning intake data from clients, ensuring its accuracy and completeness.',
-            'Tracked and analyzed case valuations on a quarterly basis.'
-        ],
-        startMonth: 1,
-        startYear: 2020,
-        endMonth: 7,
-        endYear: 2021,
-        technologies: [Technology.PYTHON, Technology.TKINTER],
-        professionalSkills: [ProfessionalSkill.DATA_ANALYSIS]
-    },
-    {
-        company: {
             name: 'Power Solutions International',
+            img: PSIEnginesLogo
         },
         jobTitle: 'Business & Engineering Intern',
         description: '',
@@ -220,6 +230,26 @@ const projects: Project[] = [
         ],
         startMonth: 9,
         startYear: 2022,
+        img: SB3Logo,
+    },
+    {
+        title: 'Personal Portfolio Website',
+        details: [
+            'Built a personal portfolio website to showcase my professional experience and projects.',
+            'Implemented a Vue3 and TypeScript frontend, and a Flask backend api.',
+            'Utilized Docker for containerization, and deployed the website on AWS.'
+        ],
+        technologies: [
+            Technology.REACT,
+            Technology.TYPESCRIPT,
+            Technology.TAILWIND,
+            Technology.AWS,
+            Technology.WEBPACK,
+            Technology.GIT
+        ],
+        startMonth: 7,
+        startYear: 2023,
+        img: B2The3PortfoliioLogo,
     },
     {
         title: 'Traveling Salesman Genetic Algorithm',
@@ -330,6 +360,7 @@ const education: Education[] = [
     {
         school: {
             name: 'University of Redlands',
+            img: RedlandsLogo,
         },
         degree: 'B.A. Physics',
         gpa: 3.92,
