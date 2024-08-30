@@ -1,6 +1,7 @@
 import React from 'react';
 import { InView } from 'react-intersection-observer';
 
+import CollapsiblePanel from './common/Panel';
 import { Education } from '@/interface/education';
 import { Project } from '@/interface/project';
 import { ProfessionalSkill, Technology } from '@/interface/skill';
@@ -20,7 +21,6 @@ interface Props {
 
 
 interface State {
-    educationCardLimit: number;
     workExperienceCardLimit: number;
     projectCardLimit: number;
 }
@@ -32,9 +32,8 @@ class DetailsFrame extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            educationCardLimit: 3,
-            workExperienceCardLimit: 10,
-            projectCardLimit: 10
+            workExperienceCardLimit: 5,
+            projectCardLimit: 3,
         }
     }
 
@@ -102,25 +101,31 @@ class DetailsFrame extends React.Component<Props, State> {
         return (
             <InView>
                 {({ inView, ref }: { inView: boolean, ref: React.RefObject<HTMLDivElement> }) => (
-                    <div ref={ ref } key={education.courses + education.degree} className={ `card mb-6 ${inView ? 'animate-fade-in' : ''}`}>
-                        <div className='flex mb-2'>
-                            <img className='h-12 mr-4 rounded' src={ education.school.img } alt={ education.school.name }/>
-                            <div>
-                                <div className='text-lg text-slate-300'>
-                                    { education.school.name } - { education.degree }
-                                </div>
-                                <div className='mb-2 pl-6 uppercase text-sm text-slate-300'>
-                                    { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
-                                </div>
-                            </div>
-                        </div>
-                        <ul className='list-disc pl-6'>
-                            {
-                                education.details.map((detail: string) => {
-                                    return <li>{ detail }</li>
-                                })
-                            }
-                        </ul>
+                    <div ref={ ref } key={education.courses + education.degree} className={ `card mb-6 cursor-pointer ${inView ? 'animate-fade-in' : ''}`}>
+                        <CollapsiblePanel>
+                            {{
+                                icon: <img className='h-12 mr-4 rounded' src={ education.school.img } alt={ education.school.name }/>,
+                                header: (
+                                    <div>
+                                        <div className='text-lg text-slate-300'>
+                                            { education.school.name } - { education.degree }
+                                        </div>
+                                        <div className='pl-6 uppercase text-sm text-slate-300'>
+                                            { this.getDateDisplay(education) }  (GPA: { education.gpa.toFixed(2) })
+                                        </div>
+                                    </div>
+                                ),
+                                body: (
+                                    <ul className={ 'mt-4 list-disc pl-6' }>
+                                        {
+                                            education.details.map((detail: string) => {
+                                                return <li>{ detail }</li>
+                                            })
+                                        }
+                                    </ul>
+                                )
+                            }}
+                        </CollapsiblePanel>
                     </div>
                 )}
             </InView>
@@ -171,29 +176,24 @@ class DetailsFrame extends React.Component<Props, State> {
 
     getWorkExperienceCards(): React.JSX.Element[] {
         var htmlCards: React.JSX.Element[] = [];
-        const numCards = this.state.workExperienceCardLimit > this.props.workExperiences.length ? this.props.workExperiences.length : this.state.workExperienceCardLimit;
-        for (let i = 0; i < numCards; i++) {
-            htmlCards.push(this.workExperienceCard(this.props.workExperiences[i]));
+        for (const experience of this.props.workExperiences) {
+            if (htmlCards.length >= this.state.workExperienceCardLimit) break;
+            htmlCards.push(this.workExperienceCard(experience));
         }
-
         return htmlCards;
     }
 
     getEducationCards(): React.JSX.Element[] {
         var htmlCards: React.JSX.Element[] = [];
-        const numCards = this.state.educationCardLimit > this.props.education.length ? this.props.education.length : this.state.educationCardLimit;
-        for (let i = 0; i < numCards; i++) {
-            htmlCards.push(this.educationCard(this.props.education[i]));
-        }
-
+        for (const education of this.props.education) htmlCards.push(this.educationCard(education));
         return htmlCards;
     }
 
     getProjectCards(): React.JSX.Element[] {
         var htmlCards: React.JSX.Element[] = [];
-        const numCards = this.state.projectCardLimit > this.props.projects.length ? this.props.projects.length : this.state.projectCardLimit;
-        for (let i = 0; i < numCards; i++) {
-            htmlCards.push(this.projectCard(this.props.projects[i]));
+        for (const project of this.props.projects) {
+            if (htmlCards.length >= this.state.projectCardLimit) break;
+            htmlCards.push(this.projectCard(project));
         }
 
         return htmlCards;
